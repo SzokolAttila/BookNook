@@ -1,0 +1,128 @@
+$orange : #F15025;
+$white: #FFFFFF;
+$lightgray: #E6E8E6;
+$gray: #CED0CE;
+$black: #191919;
+
+
+header{
+    background-image: url("../img/header.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+        h1{
+        background-color: $black;
+        font-weight: bold;
+        text-align: center;
+        font-size: 8vw;
+        letter-spacing: 3px;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-family: 'Courier New', Courier, monospace;
+    }
+}
+
+footer{
+    color: $lightgray;
+    p{
+        text-align: center;
+    }
+}
+
+nav div>ul>li:hover{
+    background-color: $orange;
+    transition: all .6s;
+    border-radius: 5px;
+}
+
+.dropdown-menu li:active{
+    background-color: $orange;
+}
+
+.navbar-brand{
+    display: flex;
+    align-items: center;
+}
+
+span{
+    font-weight: bold;
+}
+
+.card{
+    border: $orange 2px solid;
+    border-radius: 14px 14px 0px 0px;
+}
+
+.card-img-top{
+    border-radius: 12px 12px 0px 0px;
+}
+
+.btn{
+    display: block;
+    margin: auto;
+    background-color: $orange;
+    color: $black;
+}
+
+.card-body{
+    background-color: $black;
+    color: $lightgray;
+}
+
+h5{
+    text-align: center;
+}
+
+h2{
+    background-color: $orange;
+    font-variant: small-caps;
+    color: $black;
+}
+
+.navbar-nav{
+    display: flex;
+    align-items: center;
+}
+
+nav div a{
+    padding: 10px 10px 5px;
+}
+
+nav div>a:hover{
+    background-color: $orange;
+    transition: all .6s;
+    border-radius: 5px;
+}
+
+#navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $black !important;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+footer{
+    background-color: $black;
+    padding-bottom: 2px;
+}
+
+.intro{
+    color: $lightgray;
+    border-radius: 10px;
+    background-color: $black;
+}
+
+main{
+    background-color: $gray;
+}
+
+#cart{
+    justify-self: flex-end;
+    margin-right: 10px;
+}
