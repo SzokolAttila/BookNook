@@ -53,9 +53,18 @@ span{
     font-weight: bold;
 }
 
+.booklink{
+    color: $gray;
+}
+
+.booklink:hover{
+    color: $orange;
+    transition: all .4s;
+}
+
 .card{
     border: $orange 2px solid;
-    border-radius: 14px 14px 0px 0px;
+    border-radius: 14px;
 }
 
 .card-img-top{
@@ -64,24 +73,37 @@ span{
 
 .btn{
     display: block;
+    position: absolute;
+    left: 10%;
+    bottom: 10px;
+    width: 80%;
     margin: auto;
     background-color: $orange;
     color: $black;
+    font-size: 110%;
+}
+
+.btn:hover{
+    transition: all .8s;
 }
 
 .card-body{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     background-color: $black;
     color: $lightgray;
+    border-radius: 0px 0px 12px 12px;
 }
 
 h5{
     text-align: center;
+    font-variant: small-caps;
 }
 
 h2{
     background-color: $orange;
     font-variant: small-caps;
     color: $black;
+    font-family: cursive;
 }
 
 .navbar-nav{
@@ -125,4 +147,11 @@ main{
 #cart{
     justify-self: flex-end;
     margin-right: 10px;
+}
+
+@media only screen and (max-width: 992px){
+    nav div>ul>li{
+        width: 100%;
+        text-align: center;
+    }
 }
