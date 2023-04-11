@@ -4,9 +4,12 @@ $lightgray: #E6E8E6;
 $gray: #CED0CE;
 $black: #191919;
 
+body{
+    background-color: $lightgray;
+}
 
 header{
-    background-image: url("../img/header.jpeg");
+    background-image: url("../source/img/header.jpeg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -15,14 +18,14 @@ header{
     align-items: center;
     justify-content: center;
         h1{
-        background-color: $black;
+        width: 100%;
+        font-variant: small-caps;
+        background-color: $lightgray;
+        mix-blend-mode: screen;
         font-weight: bold;
         text-align: center;
-        font-size: 8vw;
+        font-size: 12vw;
         letter-spacing: 3px;
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
         font-family: 'Courier New', Courier, monospace;
     }
 }
@@ -40,7 +43,7 @@ nav div>ul>li:hover{
     border-radius: 5px;
 }
 
-.dropdown-menu li:active{
+.dropdown-menu li a:active{
     background-color: $orange;
 }
 
@@ -51,20 +54,22 @@ nav div>ul>li:hover{
 
 span{
     font-weight: bold;
+    color: $orange;
 }
 
 .booklink{
     color: $gray;
 }
 
-.booklink:hover{
-    color: $orange;
-    transition: all .4s;
-}
-
 .card{
     border: $orange 2px solid;
     border-radius: 14px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    height: 100%;
+}
+
+.col-11{
+    margin-bottom: 50px;
 }
 
 .card-img-top{
@@ -74,29 +79,86 @@ span{
 .btn{
     display: block;
     position: absolute;
-    left: 10%;
     bottom: 10px;
     width: 80%;
+    left: 10%;
     margin: auto;
     background-color: $orange;
     color: $black;
     font-size: 110%;
+    -webkit-transition: all .6s;
 }
 
 .btn:hover{
-    transition: all .8s;
+    transition: all .6s;
 }
 
 .card-body{
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     background-color: $black;
     color: $lightgray;
     border-radius: 0px 0px 12px 12px;
 }
 
-h5{
+.promo{
+    border-radius: 0px 15px 15px 0px;
+}
+
+.card-btn{
+    position: inherit;
+    width: 100%;
+    transition: all .6s;
+}
+
+.card-btn:hover{
+    background-color: $black;
+    color: $lightgray;
+}
+
+.cart{
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    border-radius: 8px;
+    color: $black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 5px;
+}
+
+.cart-input{
+    max-width: 96px;
+    padding: 14px;
+    background-color: $orange;
+    border: solid 2px $black;
+    color: $black;
+    transition: all .6s;
+    border-radius: 0px 8px 8px 0px;
+}
+
+#submit{
+    border-radius: 8px 0px 0px 8px;
+    background-color: $orange;
+    border: solid 2px $black;
+    border-right: none;
+    padding: 14px;
+    transition: all .6s;
+}
+
+#submit:hover, .cart-input:hover{
+    background-color: $black;
+    color: $lightgray;
+}
+
+.cart-input:focus{
+    background-color: $black;
+    border: 2px solid $black;
+    color: $gray;
+    outline: none;
+}
+
+h5, h3{
     text-align: center;
     font-variant: small-caps;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 h2{
@@ -122,9 +184,6 @@ nav div>a:hover{
 }
 
 #navbar{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     background-color: $black !important;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
@@ -144,14 +203,69 @@ main{
     background-color: $gray;
 }
 
-#cart{
-    justify-self: flex-end;
-    margin-right: 10px;
+.other{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    padding-left: 15px;
+    padding-right: 15px;
+    label{
+        padding-right: 15px;
+    }
+    input[type=text]{
+        color: $gray;
+        width: 100%;
+        min-width: 140px;
+        border: none;
+        border-bottom: 2px solid $orange;
+        background-color: $black;
+        transition: all .4s;
+    }
+    input:focus{
+        outline: none;
+    }
+}
+
+#searchbar{
+    color: $gray;
+    transition: all .4s;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+#searchbar:focus{
+    outline: 2px solid $orange;
 }
 
 @media only screen and (max-width: 992px){
     nav div>ul>li{
         width: 100%;
         text-align: center;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .scroll{
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        &::-webkit-scrollbar {
+            display: none;
+          }
+    }
+}
+
+@media only screen and (min-width: 992px){
+    #cart, #search{
+        position: absolute;
+        padding-right: 5px;
+    }
+    #cart{
+        right: 15px;
+        top: 6px;
+    }
+    #search{
+        right: 70px;
+        top: 12px;
     }
 }

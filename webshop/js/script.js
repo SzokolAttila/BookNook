@@ -1,133 +1,143 @@
-const books = 
-[
-    {
-        id: 1,
-        type: "featured",
-        title: "Ninth House",
-        author: "Leigh Bardugo",
-        genre: "thriller, fanfiction",
-        imgUrl: "https://www.goodreads.com/book/show/43263680-ninth-house",
-        img: "img/ninth_house.jpg",
-        url: ""
-    },
-    {
-        id: 2,
-        type: "latest release",
-        title: "Verity",
-        author: "Colleen Hoover",
-        genre: "thriller",
-        imgUrl: "https://www.goodreads.com/book/show/59344312-verity?from_search=true&from_srp=true&qid=yH9NLxTdKV&rank=1",
-        img: "img/verity.jpg",
-        url: ""
-    },
-    {
-        id: 3,
-        type: "latest release",
-        title: "Hell Bent",
-        author: "Leigh Bardugo",
-        genre: "thriller, fanfiction",
-        imgUrl: "https://www.goodreads.com/book/show/60652997-hell-bent?ref=nav_sb_ss_1_9",
-        img: "img/hell_bent.jpg",
-        url: ""
-    },
-    {
-        id: 4,
-        type: "old favorite",
-        title: "Harry Potter and the Philosopher's Stone",
-        author: "J. K. Rowling",
-        genre: "fantasy, magic, classic",
-        imgUrl: "https://www.goodreads.com/book/show/72193.Harry_Potter_and_the_Philosopher_s_Stone?ref=nav_sb_ss_1_8",
-        img: "img/philosophers_stone.jpg",
-        url: ""
-    },
-    {
-        id: 5,
-        type: "old favorite",
-        title: "The Lightning Thief",
-        author: "Rick Riordan",
-        genre: "fantasy, mythology, adventure",
-        imgUrl: "https://www.goodreads.com/book/show/28187.The_Lightning_Thief?ref=nav_sb_ss_1_15",
-        img: "img/lightning_thief.jpg",
-        url: ""
-    },
-    {
-        id: 6,
-        type: "featured",
-        title: "Shadow and Bone",
-        author: "Leigh Bardugo",
-        genre: "fantasy, high fantasy, fiction",
-        imgUrl: "https://www.goodreads.com/book/show/10194157-shadow-and-bone?from_search=true&from_srp=true&qid=cPnOyeybwq&rank=1",
-        img: "img/shadow_and_bone.jpg",
-        url: ""
-    },
-    {
-        id: 7,
-
-    }
-];
+import { books } from './data.js';
 
 let featured = ``;
 let oldFavorites = ``;
 let latestReleases = ``;
 
-books.forEach(book => {
+function template (book){
+    return `
+    <div class="col-11 col-md-6 col-lg-4 col-xl-3">
+        <div class="card my-3">
+            <a target="_blank" href="${book.imgUrl}"><img src="source/img/covers/${book.img}" class="card-img-top" alt="..."></a>
+            <div class="card-body">
+                <h5 class="card-title">${book.title}</h5>
+                <p class="card-text"><span>Author:</span> ${book.author}<br><span>Genre:</span> ${book.genre}</p>
+                <a href="html/book.html" onclick="buyBook(${book.id})" class="btn">Read more...</a>
+            </div>
+        </div>
+    </div>
+    `;
+}
+
+function categorize (book, current){
     switch (book.type) {
         case "featured":
-            featured += 
-            `
-            <div class="col-12 col-md-4 col-lg-3">
-                <div class="card my-3">
-                    <a target="_blank" href="${book.imgUrl}"><img src="${book.img}" class="card-img-top" alt="..."></a>
-                    <div class="card-body">
-                        <h5 class="card-title">${book.title}</h5>
-                        <p class="card-text"><span>Author:</span> ${book.author}<br><span>Genre:</span> ${book.genre}<br> <a class="booklink" href="${book.url}">Read more...</a></p>
-                        <a href="#" class="btn">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-            `;
+            featured += current;
             break;
         case "old favorite":
-            oldFavorites += 
-            `
-            <div class="col-12 col-md-4 col-lg-3">
-                <div class="card my-3">
-                    <a href="${book.url}"><img src="${book.img}" class="card-img-top" alt="..."></a>
-                    <div class="card-body">
-                        <h5 class="card-title">${book.title}</h5>
-                        <p class="card-text"><span>Author:</span> ${book.author}<br><span>Genre:</span> ${book.genre}<br> <a class="booklink" href="${book.url}">Read more...</a></p>
-                        <a href="#" class="btn">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-            `;
+            oldFavorites += current;
             break;
         case "latest release":
-            latestReleases +=
-            `
-            <div class="col-12 col-md-4 col-lg-3">
-                <div class="card my-3">
-                    <a href="${book.url}"><img src="${book.img}" class="card-img-top" alt="..."></a>
-                    <div class="card-body">
-                        <h5 class="card-title">${book.title}</h5>
-                        <p class="card-text"><span>Author:</span> ${book.author}<br><span>Genre:</span> ${book.genre}<br> <a class="booklink" href="${book.url}">Read more...</a></p>
-                        <a href="#" class="btn">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-            `;
+            latestReleases += current;
             break;
     }
-});
+}
 
-document.querySelector(".featured").innerHTML = featured;
-document.querySelector(".old").innerHTML = oldFavorites;
-document.querySelector(".latest").innerHTML = latestReleases;
+window.showBooks = showBooks;
+function showBooks (criterion, filterOn) {
+    criterion = criterion.toLowerCase();
+    latestReleases = ``;
+    oldFavorites = ``;
+    featured = ``;
+    if (criterion == ""){
+        books.forEach(book => {
+            let current = template(book)
+            categorize(book, current);
+        });
+    }
+    else{
+        books.forEach(book => {
+            let current = template(book);
+            if(filterOn == "genre"){
+                if (book.genre.toLowerCase().indexOf(criterion) != -1){
+                    categorize(book, current);
+                }
+            }
+            else {
+                if (book.author.toLowerCase().indexOf(criterion) != -1 || book.title.toLowerCase().indexOf(criterion) != -1){
+                    categorize(book, current);
+                }
+            }
+        });
+    }
+    document.querySelector(".featured").innerHTML = featured;
+    document.querySelector(".old").innerHTML = oldFavorites;
+    document.querySelector(".latest").innerHTML = latestReleases;
+}
 
-// let imgs = document.getElementsByClassName("card-img-top");
-// let cards = document.getElementsByClassName("card-body");
+let url = window.location.href;
+if(document.getElementsByClassName("scroll").length > 0){
+    showBooks("");
 
-// for (let i = 0; i < imgs.length; i++){
-//     let height = 300 - imgs[i].hei;
-//     cards[i].style.height = height + "px";
-// }
+    //EventListeners for categories and searchbar filters
+    let filter = document.getElementById("filter");
+    filter.addEventListener("keypress", function (event){
+        if (event.key === "Enter"){
+            event.preventDefault();
+            let value = document.other.filter.value;
+            showBooks(value, "genre");
+            document.other.filter.value = "";
+        }
+    });
+
+    let searchbar = document.getElementById("searchbar");
+    searchbar.addEventListener("keydown", function(event){
+        let condition = document.search.searchbar.value;
+        showBooks(condition);
+        if (event.key === "Enter"){
+            event.preventDefault();
+            document.search.searchbar.value = "";
+        }
+    });
+}
+
+//Load certain book
+
+if(url.includes("book.html")){
+    let selected = books.find(x => x.id == localStorage.getItem("id"));
+    let curr = 
+    `
+    <div class="col-12 col-md-4 col-lg-3 ps-5 my-5">
+    <a href="${selected.imgUrl}"><img class="promo img-fluid" src="../source/img/covers/${selected.img}"></a>
+    <div class="book-card mt-0">
+        <h5 class="pt-3">
+            ${selected.author}
+        </h5>
+        <h3 class="text-center">
+            ${selected.title}
+        </h3>
+    </div>
+        <form action="" name="cart" class="d-flex cart">
+        <input id="submit" type="submit" value="Add to Cart:"></a>
+        <input class="cart-input" inputmode="numeric" value="1" max="99" id="amount" name="amount" type="number" min="0">
+        </form>
+    </div>
+
+    <div class="col-12 col-md-8 col-lg-9">
+
+    </div>
+    `;
+
+    document.getElementById("buy").innerHTML = curr;
+
+    let toCart = document.getElementById("submit");
+    toCart.addEventListener("click", function(event){
+        event.preventDefault();
+        let amount = document.cart.amount.value;
+        if (localStorage.getItem(localStorage.getItem("id")) == null){
+            localStorage.setItem(localStorage.getItem("id"), amount);
+        }
+        else {
+            let temp = localStorage.getItem(localStorage.getItem("id"));
+            localStorage.setItem(localStorage.getItem("id"), parseInt(temp) + parseInt(amount));
+        }
+        document.cart.amount.value = 1;
+
+    });
+}
+
+//Store book to be purchased
+window.buyBook = buyBook;
+function buyBook (id){
+    localStorage.setItem("id", id);
+}

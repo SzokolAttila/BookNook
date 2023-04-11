@@ -5,42 +5,49 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookNook</title>
-    <link rel="icon" type="image/x-icon" href="img/logo.png" width="20px" height="20px">
+    <link rel="icon" type="image/x-icon" href="source/icon/logo.png" width="20px" height="20px">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <nav class="sticky-top navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark" id="navbar">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            <img src="img/logo.png" width="36px" height="36px">
+          <a class="navbar-brand" href="index.html">
+            <img src="source/icon/logo.png" width="36px" height="36px">
             BookNook</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <div class="collapse navbar-collapse " id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="#">Featured</a>
+                <a class="nav-link" href="#featured">Featured</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Latest releases</a>
+                <a class="nav-link" href="#latest">Latest releases</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Old favorites</a>
+                <a class="nav-link" href="#old">Old favorites</a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Categories
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Thriller</a></li>
-                  <li><a class="dropdown-item" href="#">Fantasy</a></li>
-                  <li><a class="dropdown-item" href="#">Sci-fi</a></li>
+                  <li><a class="dropdown-item" onclick="showBooks('thriller', 'genre')">Thriller</a></li>
+                  <li><a class="dropdown-item" onclick="showBooks('fantasy', 'genre')">Fantasy</a></li>
+                  <li><a class="dropdown-item" onclick="showBooks('sci-fi', 'genre')">Sci-fi</a></li>
+                  <form name="other" class="other">
+                    <label for="filter">Other:</label>
+                    <input id="filter" name="filter" placeholder="Enter a category..." type="text">
+                  </form>
                 </ul>
               </li>
+              <form role="search" name="search" id="search">
+                <input id="searchbar" class="me-2" type="search" placeholder="Search for an author or a title..." aria-label="Search">
+              </form>
               <li class="nav-item my-auto" id="cart">
-                <a class="nav-link" href="#"><img src="img/cart.png" width="32px" height="32px" alt=""></a>
+                <a class="nav-link" href="html/shopping_cart.html"><img src="source/icon/cart.png" width="32px" height="32px" alt=""></a>
               </li>
             </ul>
           </div>
@@ -61,7 +68,7 @@
         </div>
       </div>
 
-      <div class="row w-80 my-3 mx-4">
+      <div class="row w-80 my-3 mx-4" id="featured">
         <div class="col">
           <h2 class="ps-3 py-2">
             Featured books
@@ -69,11 +76,11 @@
         </div>
       </div>
 
-      <div class="row mx-5 featured">
+      <div class="row mx-5 px-md-2 px-lg-5 featured scroll">
       
       </div>
 
-      <div class="row w-80 my-3 mx-4">
+      <div class="row w-80 my-3 mx-4" id="latest">
         <div class="col">
           <h2 class="ps-3 py-2">
             Latest releases
@@ -81,11 +88,11 @@
         </div>
       </div>
 
-      <div class="row mx-5 latest">
+      <div class="row mx-5 px-md-2 px-lg-5 latest scroll">
        
       </div>
 
-      <div class="row w-80 my-3 mx-4">
+      <div class="row w-80 my-3 mx-4" id="old">
         <div class="col">
           <h2 class="ps-3 py-2">
             Old favorites
@@ -93,16 +100,16 @@
         </div>
       </div>
 
-      <div class="row mx-5 old">
+      <div class="row px-md-2 px-lg-5 mx-5 old scroll">
        
       </div>
     </main>
 
     <footer class="container-fluid">
-      <p class="pt-3">Created by: © Attila Szokol</p>
+      <p class="pt-3">Created by: Attila Szokol</p>
     </footer>
     
-    <script src="js/script.js"></script>
+    <script type="module" src="js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
 </body>
 </html>
