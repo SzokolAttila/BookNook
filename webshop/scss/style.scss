@@ -168,6 +168,128 @@ h2{
     font-family: cursive;
 }
 
+#sad{
+    display: block;
+    margin: auto;
+    max-height: 150px;
+    margin-top: 25px;
+}
+
+#emptyRow{
+    position: relative;
+}
+
+#empty h3{
+    display: block;
+    margin: auto;
+    text-align: center;
+    width: 70%;
+}
+
+#empty{
+    position: absolute;
+    top: 30%;
+    left: 0;
+    height: 300px;
+}
+
+.browse{
+    position: absolute;
+    left: 30%;
+    bottom: 10px;
+    width: 40%;
+    transition: all .6s;
+}
+
+.browse:hover{
+    background-color: $black;
+    color: $lightgray;
+}
+
+#shoppingCart{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.item{
+    position: relative;
+    width: 80%;
+    border: $black solid 3px;
+    border-radius: 8px;
+    background-color: $black;
+    color: $lightgray;
+    padding-right: 0px;
+    margin-bottom: 20px;
+}
+
+.item-btn img{
+    max-width: 32px;
+    max-height: 32px;
+}
+
+.item-btn{
+    position: inherit;
+    margin-top: 8px;
+    max-width: 48px;
+    max-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .6s;
+}
+
+.item-btn:hover{
+    background-color: $lightgray;
+}
+
+.col-6 p{
+    position: absolute;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.currentAmount{
+    bottom: 25px;
+}
+
+.currentPrice{
+    bottom: 0;
+}
+
+.col-2{
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    margin-bottom: 8px;
+}
+
+.col-4{
+    padding-left: 0px;
+}
+
+h4.item-title{
+    margin-top: 0;
+}
+
+h3.item-title{
+    color: $gray;
+}
+
+.item-title{
+    margin-top: 15px;
+    text-align: left;
+    font-variant: small-caps;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.item-img{
+    padding-left: -20px;
+}
+
 .navbar-nav{
     display: flex;
     align-items: center;
@@ -200,7 +322,7 @@ footer{
 }
 
 main{
-    min-height: 600px;
+    min-height: 625px;
     background-color: $gray;
 }
 

@@ -68,7 +68,6 @@ function showBooks (criterion, filterOn) {
 let url = window.location.href;
 if(document.getElementsByClassName("scroll").length > 0){
     showBooks("");
-
     //EventListeners for categories and searchbar filters
     let filter = document.getElementById("filter");
     filter.addEventListener("keypress", function (event){
@@ -109,7 +108,7 @@ if(url.includes("book.html")){
     </div>
         <form name="cart" class="d-flex cart">
         <input id="submit" type="submit" value="Add to Cart:"></a>
-        <input class="cart-input" inputmode="numeric" value="1" max="99" id="amount" name="amount" type="number" min="0">
+        <input class="cart-input" inputmode="numeric" value="1" max="99" id="amount" name="amount" type="number" min="1">
         </form>
     </div>
 
@@ -124,29 +123,97 @@ if(url.includes("book.html")){
     toCart.addEventListener("click", function(event){
         event.preventDefault();
         let amount = document.cart.amount.value;
-        if (localStorage.getItem(localStorage.getItem("id")) == null){
-            localStorage.setItem(localStorage.getItem("id"), amount);
+        if (amount > 0 && amount < 100){
+            if (localStorage.getItem(localStorage.getItem("id")) == null){
+                localStorage.setItem(localStorage.getItem("id"), amount);
+            }
+            else {
+                let temp = localStorage.getItem(localStorage.getItem("id"));
+                localStorage.setItem(localStorage.getItem("id"), parseInt(temp) + parseInt(amount));
+            }
+            location.href = "../index.html";
         }
-        else {
-            let temp = localStorage.getItem(localStorage.getItem("id"));
-            localStorage.setItem(localStorage.getItem("id"), parseInt(temp) + parseInt(amount));
+        else{
+
         }
         document.cart.amount.value = 1;
-        location.href = "../index.html";
     });
-}
+} // Load shoppingCart
 else if (url.includes("cart.html")){
-    let cart = [];
-    books.forEach(book => {
-        if  (localStorage.getItem(book.id) != null){
-            cart += book;
-            document.getElementById("shoppingCart").innerHTML += book.title;
-        }
-    });
+    refreshCart();
 }
 
 //Store book to be purchased
 window.buyBook = buyBook;
 function buyBook (id){
     localStorage.setItem("id", id);
+}
+
+window.removeFromCart = removeFromCart;
+function removeFromCart(itemId){
+    localStorage.removeItem(itemId);
+    refreshCart();
+}
+
+window.refreshCart = refreshCart;
+function refreshCart (){
+    let cart = [];
+    let emptyCart = document.getElementById("emptyCart");
+    let cartDiv = document.getElementById("shoppingCart");
+    books.forEach(book => {
+        if (localStorage.getItem(book.id) != null){
+            cart.push(book);
+        }
+    });
+    if(cart.length == 0){
+        cartDiv.style.display = "none";
+        emptyCart.innerHTML = 
+        `
+         <div class="row emptyRow">
+            <div class="col-12" id="empty">
+                <h3 class="text-center">
+                    It seems that your Cart is currently empty...
+                </h3>
+                <a target="_blank" href="https://www.flaticon.com/free-icons/sad"><img id="sad" src="../source/icon/sad.png" class="img-fluid"></a>
+                <div>
+                    <a href="../index.html" class="btn browse">Keep browsing...</a>
+                </div>
+                </div>
+         </div>
+        `;
+    }
+    else{
+        let code = ``;
+        for (const item of cart) {
+            code +=
+            `
+                <div class="row item">
+                    <div class="col-4 col-lg-2">
+                        <a target="_blank" href="${item.imgUrl}"><img src="../source/img/covers/${item.img}" class="item-img img-fluid" alt="..."></a>
+                    </div>
+                    <div class="col-6 col-lg-9">
+                        <h5 class="item-title">${item.author}:</h5>
+                        <h4 class="item-title"> ${item.title} </h4>
+                        <p class="currentAmount">
+                            Currently in cart: <span>${localStorage.getItem(item.id)}</span>
+                        </p>
+                        <p class="currentPrice">
+                            Price: <span> $</span                
+                        </p>
+                    </div>
+                    <div class="col-2 col-lg-1">
+                        <a class="btn item-btn" title="Remove from cart" onclick="removeFromCart(${item.id})"><img src="../source/icon/delete.png" class="img-fluid"></a>
+                        <a class="btn item-btn" title="Add one" onclick="changeAmount(1, ${item.id})"><img src="../source/icon/plus.png" class="img-fluid"></a>
+                        <a class="btn item-btn" title="Remove one" onclick="changeAmount(-1, ${item.id})"><img src="../source/icon/minus.png" class="img-fluid"></a>
+                    </div>
+                </div>
+            `;
+        };
+        cartDiv.innerHTML = code;
+    }
+}
+
+window.changeAmount = changeAmount;
+function changeAmount(value, itemId){
+
 }
