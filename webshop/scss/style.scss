@@ -125,8 +125,7 @@ span{
 }
 
 .cart-input{
-    max-width: 96px;
-    padding: 14px;
+    padding: 12px;
     background-color: $orange;
     border: solid 2px $black;
     color: $black;
@@ -135,11 +134,12 @@ span{
 }
 
 #submit{
+    width: 80%;
     border-radius: 8px 0px 0px 8px;
     background-color: $orange;
     border: solid 2px $black;
     border-right: none;
-    padding: 14px;
+    padding: 12px;
     transition: all .6s;
 }
 
@@ -200,6 +200,7 @@ footer{
 }
 
 main{
+    min-height: 600px;
     background-color: $gray;
 }
 

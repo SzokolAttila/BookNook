@@ -97,23 +97,23 @@ if(url.includes("book.html")){
     let selected = books.find(x => x.id == localStorage.getItem("id"));
     let curr = 
     `
-    <div class="col-12 col-md-4 col-lg-3 ps-5 my-5">
+    <div class="col-12 col-md-4 px-5 px-md-3 my-3">
     <a href="${selected.imgUrl}"><img class="promo img-fluid" src="../source/img/covers/${selected.img}"></a>
     <div class="book-card mt-0">
         <h5 class="pt-3">
-            ${selected.author}
+            ${selected.author}:
         </h5>
         <h3 class="text-center">
             ${selected.title}
         </h3>
     </div>
-        <form action="" name="cart" class="d-flex cart">
+        <form name="cart" class="d-flex cart">
         <input id="submit" type="submit" value="Add to Cart:"></a>
         <input class="cart-input" inputmode="numeric" value="1" max="99" id="amount" name="amount" type="number" min="0">
         </form>
     </div>
 
-    <div class="col-12 col-md-8 col-lg-9">
+    <div class="col-12 col-md-8">
 
     </div>
     `;
@@ -132,7 +132,16 @@ if(url.includes("book.html")){
             localStorage.setItem(localStorage.getItem("id"), parseInt(temp) + parseInt(amount));
         }
         document.cart.amount.value = 1;
-
+        location.href = "../index.html";
+    });
+}
+else if (url.includes("cart.html")){
+    let cart = [];
+    books.forEach(book => {
+        if  (localStorage.getItem(book.id) != null){
+            cart += book;
+            document.getElementById("shoppingCart").innerHTML += book.title;
+        }
     });
 }
 

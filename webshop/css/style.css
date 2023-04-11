@@ -119,8 +119,7 @@ span {
 }
 
 .cart-input {
-  max-width: 96px;
-  padding: 14px;
+  padding: 12px;
   background-color: #F15025;
   border: solid 2px #191919;
   color: #191919;
@@ -129,11 +128,12 @@ span {
 }
 
 #submit {
+  width: 80%;
   border-radius: 8px 0px 0px 8px;
   background-color: #F15025;
   border: solid 2px #191919;
   border-right: none;
-  padding: 14px;
+  padding: 12px;
   transition: all 0.6s;
 }
 
@@ -194,6 +194,7 @@ footer {
 }
 
 main {
+  min-height: 600px;
   background-color: #CED0CE;
 }
 
