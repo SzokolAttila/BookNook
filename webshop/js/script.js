@@ -107,8 +107,8 @@ if(url.includes("book.html")){
         </h3>
     </div>
         <form name="cart" class="d-flex cart">
-        <input id="submit" type="submit" value="Add to Cart:"></a>
-        <input class="cart-input" inputmode="numeric" value="1" max="99" id="amount" name="amount" type="number" min="1">
+        <input id="submit" type="submit" value="Add to Cart:">
+        <input class="cart-input" inputmode="numeric" value="1" id="amount" name="amount" type="number" min="1">
         </form>
     </div>
 
@@ -123,7 +123,7 @@ if(url.includes("book.html")){
     toCart.addEventListener("click", function(event){
         event.preventDefault();
         let amount = document.cart.amount.value;
-        if (amount > 0 && amount < 100){
+        if (amount > 0){
             if (localStorage.getItem(localStorage.getItem("id")) == null){
                 localStorage.setItem(localStorage.getItem("id"), amount);
             }
@@ -131,11 +131,9 @@ if(url.includes("book.html")){
                 let temp = localStorage.getItem(localStorage.getItem("id"));
                 localStorage.setItem(localStorage.getItem("id"), parseInt(temp) + parseInt(amount));
             }
-            location.href = "../index.html";
+            purchased(selected, amount);
         }
-        else{
-
-        }
+        else amountPopUp();
         document.cart.amount.value = 1;
     });
 } // Load shoppingCart
@@ -213,7 +211,52 @@ function refreshCart (){
     }
 }
 
+function purchased(item, value){
+    let container = document.getElementById("purchased");
+    container.innerHTML = 
+    `
+    <div class="row">
+        <div class="col-3 col-md-4">
+            <img class="img-fluid" src="../source/img/covers/${item.img}">
+        </div>
+        <div class="col-9 col-md-8">
+            <p class="text-center popupText">
+                Added to Cart: 
+            </p>
+            <h5>
+            ${item.author} - <br><span>${item.title}</span>
+            </h5>
+            <p class="popupText text-center">
+                Amount: <span>${value}</span>
+                <br>
+                Price: <span>${localStorage.getItem(item.id)}$</span>
+            </p>
+            <a class="btn popup-btn" onclick="closePopUp('purchased')">OK.</a>
+        </div>
+    </div>
+    `
+    container.style.zIndex = 1;
+}
+
+function amountPopUp(){
+    let container = document.getElementById("amountPop");
+    container.style.zIndex = 1;
+}
+
+window.closePopUp = closePopUp;
+function closePopUp(id){
+    let container = document.getElementById(id);
+    container.style.zIndex = -1;
+}
+
 window.changeAmount = changeAmount;
 function changeAmount(value, itemId){
-
+    let current = localStorage.getItem(itemId);
+    if (value == -1 && current == 1){
+        amountPopUp();
+    }   
+    else{
+        localStorage.setItem(itemId, parseInt(current) + parseInt(value));
+        refreshCart();
+    }
 }

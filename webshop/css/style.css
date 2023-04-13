@@ -119,6 +119,7 @@ span {
 }
 
 .cart-input {
+  max-width: 72px;
   padding: 12px;
   background-color: #F15025;
   border: solid 2px #191919;
@@ -178,6 +179,59 @@ h2 {
   margin: auto;
   text-align: center;
   width: 70%;
+}
+
+.popup {
+  border-radius: 8px;
+  padding: 25px;
+  min-width: 150px;
+  min-height: 50px;
+  position: absolute;
+  height: 20%;
+  width: 30%;
+  top: 40%;
+  left: 35%;
+  background-color: #191919;
+  z-index: -1;
+  color: #E6E8E6;
+}
+
+#purchased {
+  min-width: 350px;
+  min-height: 35%;
+  top: 32.5%;
+  padding: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+  #purchased {
+    width: 80%;
+    left: 10%;
+  }
+}
+.col-lg-8 {
+  padding-left: 0;
+}
+
+#purchased .popupText {
+  position: inherit;
+  width: 100%;
+}
+
+.popupText {
+  width: 80%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-variant: small-caps;
+  position: absolute;
+  left: 10%;
+  height: 25px;
+  top: 25px;
+}
+
+.popup-btn {
+  position: absolute;
+  color: #191919;
+  bottom: 10px;
 }
 
 #empty {
@@ -261,7 +315,7 @@ h2 {
   margin-bottom: 8px;
 }
 
-.col-4 {
+.item .col-4 {
   padding-left: 0px;
 }
 
