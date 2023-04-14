@@ -223,11 +223,12 @@ function refreshCart (){
                 <a class="btn cart-btn" onclick="emptyCart()">Empty cart</a>
             </div>
             <div class="col-6">
-                <a class="btn cart-btn" onclick="">Proceed to checkout</a>
+                <a class="btn cart-btn" onclick="checkout()">Proceed to checkout</a>
             </div>
         </div>
         `;
         cartDiv.innerHTML = code;
+        localStorage.setItem("total", total);
     }
 }
 
@@ -288,4 +289,21 @@ function emptyCart(){
             localStorage.removeItem(book.id);
     });
     refreshCart();
+}
+
+window.checkout = checkout;
+function checkout(){
+    let container = document.getElementById("checkoutPopUp");
+    container.innerHTML = 
+    `
+    <div class="row">
+    <div class="col-12">
+      <p class="text-center popupText">
+        Total price: <span> ${localStorage.getItem("total")}$</span>
+      </p>
+      <a class="btn popup-btn" onclick="closePopUp('checkoutPopUp'), emptyCart()">Pay</a>
+    </div>
+  </div>
+    `;
+    container.style.zIndex = 1;
 }
