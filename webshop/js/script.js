@@ -3,6 +3,7 @@ import { books } from './data.js';
 let featured = ``;
 let oldFavorites = ``;
 let latestReleases = ``;
+count();
 
 function template (book){
     return `
@@ -64,6 +65,23 @@ function showBooks (criterion, filterOn) {
     document.querySelector(".old").innerHTML = oldFavorites;
     document.querySelector(".latest").innerHTML = latestReleases;
 }
+                    
+window.count = count;
+function count(){
+    let listLength = 0;
+    books.forEach(book => {
+        if (localStorage.getItem(book.id) != null)
+            listLength++;
+    });
+    localStorage.setItem("length", listLength)
+    let counter = document.getElementById("counter");
+    if (listLength == 0 || localStorage.getItem("length") == null)
+        counter.style.display = "none";
+    else {
+        counter.innerHTML = `<p>${localStorage.getItem("length")}</p>`;
+        counter.style.display = "block";
+    }
+}
 
 let url = window.location.href;
 if(document.getElementsByClassName("scroll").length > 0){
@@ -99,7 +117,7 @@ if(url.includes("book.html")){
     let curr = 
     `
     <div class="col-12 col-md-4 px-5 px-md-3 my-3">
-    <a href="${selected.imgUrl}"><img class="promo img-fluid" src="../source/img/covers/${selected.img}"></a>
+    <a href="${selected.imgUrl}" target="_blank"><img class="promo img-fluid" src="../source/img/covers/${selected.img}"></a>
     <div class="book-card mt-0">
         <h5 class="pt-3">
             ${selected.author}:
@@ -109,7 +127,7 @@ if(url.includes("book.html")){
         </h3>
     </div>
         <form name="cart" class="d-flex cart">
-        <input id="submit" type="submit" value="Add to Cart:">
+        <input id="submit" type="submit" value="${selected.price}$ - Add to Cart:">
         <input class="cart-input" inputmode="numeric" value="1" id="amount" name="amount" type="number" min="1">
         </form>
     </div>
@@ -166,21 +184,9 @@ function refreshCart (){
         }
     });
     if(cart.length == 0){
+        localStorage.setItem("length", 0)
         cartDiv.style.display = "none";
-        emptyCart.innerHTML = 
-        `
-         <div class="row emptyRow">
-            <div class="col-12" id="empty">
-                <h3 class="text-center">
-                    It seems that your Cart is currently empty...
-                </h3>
-                <a target="_blank" href="https://www.flaticon.com/free-icons/sad"><img id="sad" src="../source/icon/sad.png" class="img-fluid"></a>
-                <div>
-                    <a href="../index.html" class="btn browse">Keep browsing...</a>
-                </div>
-                </div>
-         </div>
-        `;
+        emptyCart.style.display = "block";
     }
     else{
         let code = ``;
@@ -216,7 +222,7 @@ function refreshCart (){
         <div class="row checkout">
             <div class="col-12">
                 <h6 class="text-end checkout-text">
-                    Total: <span>${total}$</span>
+                    Total: <span>${Math.round(total * 100) / 100}$</span>
                 </h6>
             </div>
             <div class="col-6">
@@ -227,9 +233,11 @@ function refreshCart (){
             </div>
         </div>
         `;
+        localStorage.setItem("length", cart.length);
         cartDiv.innerHTML = code;
         localStorage.setItem("total", total);
     }
+    count();
 }
 
 function purchased(item, value){
@@ -237,10 +245,10 @@ function purchased(item, value){
     container.innerHTML = 
     `
     <div class="row">
-        <div class="col-3 col-md-4">
+        <div class="col-2 col-md-4">
             <img class="img-fluid" src="../source/img/covers/${item.img}">
         </div>
-        <div class="col-9 col-md-8">
+        <div class="col-10 col-md-8">
             <p class="text-center popupText">
                 Added to Cart: 
             </p>
@@ -250,24 +258,27 @@ function purchased(item, value){
             <p class="popupText text-center">
                 Amount: <span>${value}</span>
                 <br>
-                Price: <span>${item.price}$</span>
+                Cost: <span>${item.price * value}$</span>
+                <br>
+                In Cart: <span>${localStorage.getItem(item.id)}</span>
             </p>
             <a class="btn popup-btn" onclick="closePopUp('purchased')">OK.</a>
         </div>
     </div>
     `
-    container.style.zIndex = 1;
+    container.style.display = "block";
+    count();
 }
 
 function amountPopUp(){
     let container = document.getElementById("amountPop");
-    container.style.zIndex = 1;
+    container.style.display = "block";
 }
 
 window.closePopUp = closePopUp;
 function closePopUp(id){
     let container = document.getElementById(id);
-    container.style.zIndex = -1;
+    container.style.display = "none";
 }
 
 window.changeAmount = changeAmount;
@@ -299,11 +310,11 @@ function checkout(){
     <div class="row">
     <div class="col-12">
       <p class="text-center popupText">
-        Total price: <span> ${localStorage.getItem("total")}$</span>
+        Total price: <span> ${Math.round(localStorage.getItem("total") * 100) / 100}$</span>
       </p>
       <a class="btn popup-btn" onclick="closePopUp('checkoutPopUp'), emptyCart()">Pay</a>
     </div>
   </div>
     `;
-    container.style.zIndex = 1;
+    container.style.display = "block";
 }

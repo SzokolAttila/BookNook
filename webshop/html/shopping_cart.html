@@ -31,6 +31,7 @@
               </li>
               <li class="nav-item my-auto" id="cart">
                 <a class="nav-link" href="../html/shopping_cart.html"><img src="../source/icon/cart.png" width="32px" height="32px" alt=""></a>
+                <a href="../html/shopping_cart.html" id="counter"></a>
               </li>
             </ul>
           </div>
@@ -42,7 +43,17 @@
           
         </div>
         <div id="emptyCart"> 
-
+          <div class="row emptyRow">
+            <div class="col-12" id="empty">
+                <h3 class="text-center">
+                    It seems that your Cart is currently empty...
+                </h3>
+                <a target="_blank" href="https://www.flaticon.com/free-icons/sad"><img id="sad" src="../source/icon/sad.png" class="img-fluid"></a>
+                <div>
+                    <a href="../index.html" class="btn browse">Keep browsing...</a>
+                </div>
+                </div>
+          </div>
         </div>
         <div class="popup" id="amountPop">
           <div class="row">
