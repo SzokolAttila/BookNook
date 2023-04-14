@@ -93,6 +93,8 @@ if(document.getElementsByClassName("scroll").length > 0){
 //Load certain book
 
 if(url.includes("book.html")){
+    if (localStorage.getItem("id") == null)
+        localStorage.setItem("id", 1);
     let selected = books.find(x => x.id == localStorage.getItem("id"));
     let curr = 
     `
@@ -182,7 +184,9 @@ function refreshCart (){
     }
     else{
         let code = ``;
+        let total = 0;
         for (const item of cart) {
+            total += item.price * localStorage.getItem(item.id);
             code +=
             `
                 <div class="row item">
@@ -196,7 +200,7 @@ function refreshCart (){
                             Currently in cart: <span>${localStorage.getItem(item.id)}</span>
                         </p>
                         <p class="currentPrice">
-                            Price: <span> $</span                
+                            Price: <span> ${item.price * localStorage.getItem(item.id)}$</span                
                         </p>
                     </div>
                     <div class="col-2 col-lg-1">
@@ -207,6 +211,22 @@ function refreshCart (){
                 </div>
             `;
         };
+        code +=
+        `
+        <div class="row checkout">
+            <div class="col-12">
+                <h6 class="text-end checkout-text">
+                    Total: <span>${total}$</span>
+                </h6>
+            </div>
+            <div class="col-6">
+                <a class="btn cart-btn" onclick="emptyCart()">Empty cart</a>
+            </div>
+            <div class="col-6">
+                <a class="btn cart-btn" onclick="">Proceed to checkout</a>
+            </div>
+        </div>
+        `;
         cartDiv.innerHTML = code;
     }
 }
@@ -229,7 +249,7 @@ function purchased(item, value){
             <p class="popupText text-center">
                 Amount: <span>${value}</span>
                 <br>
-                Price: <span>${localStorage.getItem(item.id)}$</span>
+                Price: <span>${item.price}$</span>
             </p>
             <a class="btn popup-btn" onclick="closePopUp('purchased')">OK.</a>
         </div>
@@ -259,4 +279,13 @@ function changeAmount(value, itemId){
         localStorage.setItem(itemId, parseInt(current) + parseInt(value));
         refreshCart();
     }
+}
+
+window.emptyCart = emptyCart;
+function emptyCart(){
+    books.forEach(book => {
+        if (localStorage.getItem(book.id) != null)
+            localStorage.removeItem(book.id);
+    });
+    refreshCart();
 }

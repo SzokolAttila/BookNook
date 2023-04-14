@@ -80,7 +80,33 @@ span {
   background-color: #F15025;
   color: #191919;
   font-size: 110%;
-  -webkit-transition: all 0.6s;
+  transition: all 0.6s;
+}
+
+.checkout-text {
+  font-weight: bold;
+  font-variant: small-caps;
+  padding-top: 0px;
+  margin-bottom: 25px;
+}
+
+.cart-btn {
+  position: relative;
+  display: block;
+  margin: auto;
+  width: 80%;
+  margin-left: 0px;
+}
+
+.cart-btn:hover {
+  background-color: #191919;
+  color: #E6E8E6;
+}
+
+.checkout {
+  display: flex;
+  width: 80%;
+  justify-content: baseline;
 }
 
 .btn:hover {
