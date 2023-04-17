@@ -9,7 +9,7 @@ body{
 }
 
 header{
-    background-image: url("../source/img/header.jpeg");
+    background-image: url("../source/img/header.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -101,8 +101,6 @@ span a:hover{
     background-color: $lightgray;
 }
 
-
-
 .btn{
     display: block;
     position: absolute;
@@ -113,8 +111,28 @@ span a:hover{
     background-color: $orange;
     color: $black;
     font-size: 110%;
+    height: 46px;
     -webkit-transition: all .6s;
     transition: all .6s;
+}
+
+.template-row{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    left: 10px;
+    padding: 0px;
+    align-items: center;
+}
+
+.template-btn{
+    font-size: 80%;
+    position: relative;
+    margin: 0px;
+}
+
+.template-btn a{
+    padding-top: 7%;
 }
 
 .checkout-text{
@@ -245,6 +263,12 @@ h2{
     width: 70%;
 }
 
+.author{
+    font-variant: small-caps;
+    text-align: center;
+    margin-bottom: 0;
+}
+
 .popup{
     display: none;
     border-radius: 8px;
@@ -252,7 +276,7 @@ h2{
     min-width: 150px;
     min-height: 50px;
     position: fixed;
-    height: 20%;
+    height: 25%;
     width: 30%;
     top: 40%;
     left: 35%;
@@ -263,7 +287,7 @@ h2{
 #purchased{
     min-width: 350px;
     min-height: 36%;
-    top: 32.5%;
+    top: 32%;
     padding: 10px;
 }
 
@@ -530,6 +554,13 @@ main{
     outline: 2px solid $orange;
 }
 
+@media only screen and (min-width: 768px){
+    #purchased{
+        height: 40%;
+        top: 30%;
+    }
+}
+
 @media only screen and (max-width: 992px){
     #counter{
         bottom: 10px;
@@ -557,6 +588,9 @@ main{
         width: 80%;
         left: 10%;
     }
+    .template-btn a{
+        padding-top: 5%;
+    }
 }
 
 @media only screen and (min-width: 992px){
@@ -571,5 +605,31 @@ main{
     #search{
         right: 70px;
         top: 12px;
+    }
+    .template-btn a{
+        padding-top: 1%;
+    }
+    .popup{
+        width: 40%;
+        left: 35%;
+    }
+    .template-btn:nth-of-type(2) a{
+        padding-top: 6%;
+    }
+}
+
+@media only screen and (min-width: 1200px){
+    .template-btn a{
+        padding-top: 2%;
+    }
+    .popup{
+        width: 30%;
+        top: 40%;
+    }
+}
+
+@media only screen and (min-width: 1400px){
+    .template-btn a{
+        padding-top: 7%;
     }
 }

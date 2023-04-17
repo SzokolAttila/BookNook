@@ -5,12 +5,6 @@ let oldFavorites = ``;
 let latestReleases = ``;
 count();
 
-function similar (book){
-    return `
-
-    `;
-}
-
 function template (book){
     return `
     <div class="col-11 col-md-6 col-lg-4 col-xl-3">
@@ -19,7 +13,14 @@ function template (book){
             <div class="card-body">
                 <h5 class="card-title">${book.title}</h5>
                 <p class="card-text"><span>Author:</span> ${book.author}<br><span>Genre:</span> ${book.genre}</p>
-                <a href="html/book.html" onclick="buyBook(${book.id})" class="btn">Read more...</a>
+                <div class="row template-row">
+                    <div class="col-8 template-btn">
+                        <a href="html/book.html" onclick="buyBook(${book.id})" class="btn">Read more...</a>
+                    </div>
+                    <div class="col-4 template-btn">
+                        <a class="btn" onclick="addToCart(${book.id}, 1)"><img width="32px" height="32px" src="../source/icon/cart.png"></a> 
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -154,22 +155,26 @@ if(url.includes("book.html")){
     toCart.addEventListener("click", function(event){
         event.preventDefault();
         let amount = document.cart.amount.value;
-        if (amount > 0){
-            if (localStorage.getItem(localStorage.getItem("id")) == null){
-                localStorage.setItem(localStorage.getItem("id"), amount);
-            }
-            else {
-                let temp = localStorage.getItem(localStorage.getItem("id"));
-                localStorage.setItem(localStorage.getItem("id"), parseInt(temp) + parseInt(amount));
-            }
-            purchased(selected, amount);
-        }
+        if (amount > 0)
+            addToCart(selected.id, amount)
         else amountPopUp();
         document.cart.amount.value = 1;
     });
 } // Load shoppingCart
 else if (url.includes("cart.html")){
     refreshCart();
+}
+
+window.addToCart = addToCart;
+function addToCart (id, amount){
+    if (localStorage.getItem(id) == null){
+        localStorage.setItem(id, amount);
+    }
+    else {
+        let temp = localStorage.getItem(id);
+        localStorage.setItem(id, parseInt(temp) + parseInt(amount));
+    }
+    purchased(id, amount);
 }
 
 //Store book to be purchased
@@ -217,7 +222,7 @@ function refreshCart (){
                             Currently in cart: <span>${localStorage.getItem(item.id)}</span>
                         </p>
                         <p class="currentPrice">
-                            Price: <span> ${item.price * localStorage.getItem(item.id)}$</span                
+                            Price: <span> ${Math.round(item.price * localStorage.getItem(item.id) * 100) / 100}$</span                
                         </p>
                     </div>
                     <div class="col-2 col-lg-1">
@@ -251,25 +256,30 @@ function refreshCart (){
     count();
 }
 
-function purchased(item, value){
+window.purchased = purchased;
+function purchased(id, value){
     let container = document.getElementById("purchased");
+    let item = books.find(x => x.id == id);
     container.innerHTML = 
     `
     <div class="row">
-        <div class="col-2 col-md-4">
+        <div class="col-3 col-md-4">
             <img class="img-fluid" src="../source/img/covers/${item.id}.jpg">
         </div>
-        <div class="col-10 col-md-8">
+        <div class="col-9 col-md-8">
             <p class="text-center popupText">
                 Added to Cart: 
             </p>
+            <h6 class="author">
+            ${item.author} -
+            </h6>
             <h5>
-            ${item.author} - <br><span>${item.title}</span>
+                <span>${item.title}</span>
             </h5>
             <p class="popupText text-center">
                 Amount: <span>${value}</span>
                 <br>
-                Cost: <span>${item.price * value}$</span>
+                Cost: <span>${Math.round(item.price * value * 100) / 100}$</span>
                 <br>
                 In Cart: <span>${localStorage.getItem(item.id)}</span>
             </p>

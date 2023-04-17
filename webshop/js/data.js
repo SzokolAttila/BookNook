@@ -197,6 +197,72 @@ export const books =
         price: 13.9,
         source: "https://www.goodreads.com/en/book/show/62335396",
         summary: "When Raihn offers Oraya a secret alliance, taking the deal is her only chance at reclaiming her kingdom–and gaining her vengeance against the lover who betrayed her. But to do so, she'll need to harness a devastating ancient power, intertwined with her father's greatest secrets."
+    },
+    {
+        id: 19,
+        type: "old favorite",
+        title: "Fire & Blood",
+        author: "George R. R. Martin",
+        genre: "fantasy, fiction, high fantasy, dragons, epic fantasy, adult",
+        imgUrl: "https://www.goodreads.com/book/show/39943621-fire-blood?from_search=true&from_srp=true&qid=XBdRO7DaVv&rank=2",
+        price: 13.99,
+        source: "https://www.gradesaver.com/fire-and-blood/study-guide/summary",
+        summary: "The story begins with Aegon Targaryen, also known as \"Aegon the Conqueror.'\" Traveling from the land Valyria to Westeros with his two sisters, Rhaenys and Visenya, Aegon weds both of them, according to Valyrian custom. They land on the coastal land Dragonstone and make their home there with their dragons Balerion, Vhagar, and Meraxes. Aegon turns down a marriage proposal from Argilac Durrandon and offers his companion, and rumored half-brother, Orys Baratheon instead. Argilac angrily rejects his offer, cutting off the hands of Aegon's envoy. Aegon deliberates with his council and announces, via ravens, that he has declared himself king of the realm and that he plans to go to war."
+    },
+    {
+        id: 20,
+        type: "old favorite",
+        title: "Harry Potter and the Goblet of Fire",
+        author: "J. K. Rowling",
+        genre: "fantasy, young adult, fiction, magic, classics, children",
+        imgUrl: "https://www.goodreads.com/book/show/6.Harry_Potter_and_the_Goblet_of_Fire?from_search=true&from_srp=true&qid=eWuqNvvrEf&rank=1",
+        price: 12.4,
+        source: "https://harrypotter.fandom.com/wiki/Harry_Potter_and_the_Goblet_of_Fire",
+        summary: "Harry Potter is in his fourth year at Hogwarts. Harry wants to get away from the pernicious Dursleys and go to the Quidditch World Cup with Hermione, Ron, and the Weasleys. He wants to find out about the mysterious event to take place at Hogwarts this year, an event involving two other rival schools of magic, and a competition that hasn't happened for hundreds of years. He wants to be a normal, fourteen-year-old wizard. But unfortunately for Harry Potter, he's not normal - not even by Wizarding standards. And in his case, different can be deadly."
+    },
+    {
+        id: 21,
+        type: "latest release",
+        title: "Ready Player Two",
+        author: "Ernest Cline",
+        genre: "sci-fi, fiction, fantasy, dystopia, young adult, adventure",
+        imgUrl: "https://www.goodreads.com/book/show/26082916-ready-player-two?from_search=true&from_srp=true&qid=wChgHonVOJ&rank=1",
+        price: 11.2,
+        source: "https://www.sparknotes.com/lit/ready-player-two/summary/",
+        summary: "In the year 2045, Wade Watts won a contest. The contest was held in the OASIS, a virtual galaxy where users log in and experience many worlds dedicated to music, movies, books, games, education, and many other facets of pop culture. The real world is in ruins. Climate change, famine, war, and overcrowding have destroyed most nations. The OASIS is the only refuge for many people. When Wade won the contest, he received controlling shares in the OASIS, valued at hundreds of billions of dollars. He split the controlling shares with his three friends, Aech, Shoto, and Art3mis (Samantha)."
+    },
+    {
+        id: 22,
+        type: "latest release",
+        title: "Dark Angel",
+        author: "John Sandford",
+        genre: "thriller, mystery, suspense, crime, fiction",
+        imgUrl: "https://www.goodreads.com/book/show/83172073-dark-angel?from_search=true&from_srp=true&qid=BSH86AHhDj&rank=2",
+        price: 16.7,
+        source: "https://www.goodreads.com/en/book/show/61843534",
+        summary: "Letty Davenport, the tough-as-nails adopted daughter of Lucas Davenport, takes on an undercover assignment that brings her across the country and into the crosshairs of a dangerous group of hackers. Letty Davenport's days working a desk job at are behind her."
+    },
+    {
+        id: 23,
+        type: "featured",
+        title: "Ready Player One",
+        author: "Ernest Cline",
+        genre: "sci-fi, fiction, young, adult, fantasy, dystopia, adventure",
+        imgUrl: "https://www.goodreads.com/book/show/9969571-ready-player-one?ref=nav_sb_ss_1_16",
+        price: 10.3,
+        source: "https://tv.apple.com/tm/movie/ready-player-one/umc.cmc.295lpojxtonf6dqc4za2i97lr",
+        summary: "In 2045 the planet is on the brink of chaos and collapse, but people find salvation in the OASIS: an expansive virtual reality universe created by eccentric James Halliday. When Halliday dies, he promises his immense fortune to the first person to discover a digital Easter egg that's hidden somewhere in the OASIS. When young Wade Watts joins the contest, he finds himself becoming an unlikely hero in a reality-bending treasure hunt through a fantastical world of mystery, discovery and danger."
+    },
+    {
+        id: 24,
+        type: "featured",
+        title: "Harry Potter and the Cursed Child",
+        author: "J. K. Rowling",
+        genre: "fantasy, fiction, young adult, plays, magic, adventure, middle grade",
+        imgUrl: "https://www.goodreads.com/book/show/29056083-harry-potter-and-the-cursed-child?from_search=true&from_srp=true&qid=meNcYvisBO&rank=1",
+        price: 14.5,
+        source: "https://harrypotter.fandom.com/wiki/Harry_Potter_and_the_Cursed_Child",
+        summary: "While Harry grapples with a past that refuses to stay where it belongs, his youngest son Albus must struggle with the weight of a family legacy he never wanted. As past and present fuse ominously, both father and son learn the uncomfortable truth: sometimes, darkness comes from unexpected places."
     }
 ];
 
