@@ -86,7 +86,7 @@ span a:hover{
 }
 
 .d-flex{
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -289,7 +289,8 @@ h2{
 
 #copyright{
     top: 35%;
-    min-height: 250px;
+    min-width: 300px;
+    min-height: 275px;
 }
 
 #copyright .popupText{

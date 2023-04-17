@@ -142,6 +142,61 @@ export const books =
         price: 11.8,
         source: "https://booksofbrilliance.com/2023/03/23/the-shadow-of-the-world/#:~:text=The%20Shadow%20of%20the%20Gods%20Summary,warriors%20against%20any%20opposing%20forces.",
         summary: "All the gods were killed or imprisoned 300 years ago and their descendants are being hunted as punishment for destroying the world in a brutal war. Vigrio is now run by jarls that rise to the top of the pack and lead their battle-warriors against any opposing forces. But an unknowing force is killing people and stealing children from all parts."
+    },
+    {
+        id: 14,
+        type: "featured",
+        title: "Six of Crows",
+        author: "Leigh Bardugo",
+        genre: "fantasy, young adult, fiction, romance, adventure",
+        imgUrl: "https://www.goodreads.com/book/show/23437156-six-of-crows?from_search=true&from_srp=true&qid=1KgrA9LhVb&rank=1",
+        price: 12.3,
+        source: "https://www.readingforsanity.com/2021/09/the-six-of-crows-duology-including-six.html#:~:text=Six%20of%20Crows%20tells%20the,gain%2C%20and%20never%20looking%20back.",
+        summary: "Six of Crows tells the story of Kaz Brekker, a brilliant but ruthless conman with a skilled crew of cutthroats, sneak thieves, and spies at his disposal. Kaz and his associates make their own way in a brutal world, trading in secrets, stealing for their own gain, and never looking back."
+    },
+    {
+        id: 15,
+        type: "latest release",
+        title: "King of Scars",
+        author: "Leigh Bardugo",
+        genre: "fantasy, young adult, fiction, romance, high fantasy, magic",
+        imgUrl: "https://www.goodreads.com/book/show/36307634-king-of-scars?from_search=true&from_srp=true&qid=AxCWVBCk5p&rank=1",
+        price: 10.6,
+        source: "https://en.wikipedia.org/wiki/King_of_Scars#:~:text=Awards%20and%20nominations-,Plot,the%20Darkling%20infested%20him%20with.",
+        summary: "King of Ravka Nikolai Lantsov attempts to rebuild his country after the Ravkan Civil War and get it in order to fend off threats from neighboring nations Shu Han and Fjerda while dealing with the demons the Darkling infested him with."
+    },
+    {
+        id: 16,
+        type: "featured",
+        title: "Siege and Storm",
+        author: "Leigh Bardugo",
+        genre: "fantasy, young adult, romance, fiction, magic, high fantasy",
+        imgUrl: "https://www.goodreads.com/book/show/14061955-siege-and-storm?ref=nav_sb_ss_1_15",
+        price: 12.0,
+        source: "https://booksteacupreviews.com/2021/06/11/siege-and-storm-the-shadow-and-bone-trilogy-2-by-leigh-bardugo-enjoyable-action-packed-tsarpunk/#:~:text=Hunted%20across%20the%20True%20Sea,or%20her%20destiny%20for%20long.",
+        summary: "Hunted across the True Sea, haunted by the lives she took on the Fold, Alina must try to make a life with Mal in an unfamiliar land. She finds starting new is not easy while keeping her identity as the Sun Summoner a secret. She can't outrun her past or her destiny for long."
+    },
+    {
+        id: 17,
+        type: "old favorite",
+        title: "The Two Towers",
+        author: "J. R. R. Tolkien",
+        genre: "fantasy, fiction, classics, adventure, epic fantasy, high fantasy",
+        imgUrl: "https://www.goodreads.com/book/show/61215372-the-two-towers?ref=nav_sb_ss_1_14",
+        price: 9.3,
+        source: "https://kinolab.org/Film.php?id=141",
+        summary: "Frodo and Sam are trekking to Mordor to destroy the One Ring of Power while Gimli, Legolas and Aragorn search for the orc-captured Merry and Pippin. All along, nefarious wizard Saruman awaits the Fellowship members at the Orthanc Tower in Isengard."
+    },
+    {
+        id: 18,
+        type: "latest release",
+        title: "The Ashes and the Star-Cursed King",
+        author: "Carissa Broadbent",
+        genre: "fantasy, romance, vampires, paranormal, adult, high fantasy",
+        imgUrl: "https://www.goodreads.com/book/show/62335396-the-ashes-and-the-star-cursed-king?ref=nav_sb_ss_1_14",
+        price: 13.9,
+        source: "https://www.goodreads.com/en/book/show/62335396",
+        summary: "When Raihn offers Oraya a secret alliance, taking the deal is her only chance at reclaiming her kingdom–and gaining her vengeance against the lover who betrayed her. But to do so, she'll need to harness a devastating ancient power, intertwined with her father's greatest secrets."
     }
 ];
 
