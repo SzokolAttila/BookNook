@@ -319,13 +319,19 @@ function checkout(){
     container.innerHTML = 
     `
     <div class="row">
-    <div class="col-12">
-      <p class="text-center popupText">
-        Total price: <span> ${Math.round(localStorage.getItem("total") * 100) / 100}$</span>
-      </p>
-      <a class="btn popup-btn" onclick="closePopUp('checkoutPopUp'), emptyCart()">Pay</a>
+        <div class="col-12">
+            <p class="text-center popupText">
+                Total price: <span> ${Math.round(localStorage.getItem("total") * 100) / 100}$</span>
+            </p>
+            <a class="btn popup-btn" onclick="closePopUp('checkoutPopUp'), emptyCart()">Pay</a>
+        </div>
     </div>
-  </div>
     `;
+    container.style.display = "block";
+}
+
+window.copyright = copyright;
+function copyright() {
+    let container = document.getElementById("copyright");
     container.style.display = "block";
 }

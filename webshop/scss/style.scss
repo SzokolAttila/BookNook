@@ -18,9 +18,9 @@ header{
     align-items: center;
     justify-content: center;
         h1{
-        width: 100%;
+        width: fit-content;
         font-variant: small-caps;
-        background-color: $lightgray;
+        background-color: rgba($color: $lightgray, $alpha: 1);
         mix-blend-mode: screen;
         font-weight: bold;
         text-align: center;
@@ -75,6 +75,33 @@ span{
 .card-img-top{
     border-radius: 12px 12px 0px 0px;
 }
+
+span a{
+    color: $lightgray;
+    transition: all .6s;
+}
+
+span a:hover{
+    color: $orange;
+}
+
+.d-flex{
+    justify-content: space-around;
+    align-items: center;
+}
+
+.cpr{
+    border-radius: 5px;
+    background-color: $orange;
+    transition: all .6s;
+    padding: 5px;
+}
+
+.cpr:hover{
+    background-color: $lightgray;
+}
+
+
 
 .btn{
     display: block;
@@ -224,7 +251,7 @@ h2{
     padding: 25px;
     min-width: 150px;
     min-height: 50px;
-    position: absolute;
+    position: fixed;
     height: 20%;
     width: 30%;
     top: 40%;
@@ -260,8 +287,18 @@ h2{
     padding-left: 0;
 }
 
+#copyright{
+    top: 35%;
+    min-height: 250px;
+}
+
+#copyright .popupText{
+    position: initial;
+    width: 100%;
+}
+
 #purchased .popupText{
-    position: inherit;
+    position: initial;
     width: 100%;
 }
 
@@ -366,6 +403,17 @@ h2{
     }
 }
 
+.footerLink{
+    text-decoration: underline;
+    color: $lightgray;
+    transition: all .6s;
+}
+
+.footerLink:hover{
+    color: $orange;
+    cursor: pointer;
+}
+
 i{
     color: $orange;
 }
@@ -443,14 +491,14 @@ footer{
 }
 
 main{
-    min-height: 625px;
+    min-height: 610px;
     background-color: $gray;
 }
 
 .other{
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: flex-start;
     padding-left: 15px;
     padding-right: 15px;
     label{

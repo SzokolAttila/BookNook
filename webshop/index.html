@@ -56,7 +56,7 @@
       </nav>
 
     <header>
-        <h1 class="my-auto">
+        <h1 class="my-auto px-5">
           BookNook
         </h1>
     </header>
@@ -104,10 +104,33 @@
       <div class="row px-md-2 px-lg-5 mx-5 old scroll">
        
       </div>
+      <div class="popup" id="copyright">
+        <div class="row">
+          <div class="col-12">
+              <h5>
+                  Copyright
+              </h5>
+              <p class="text-center popupText">
+                  Book covers: <span><a target="_blank" href="https://www.goodreads.com/?ref=nav_hom">Goodreads</a></span>
+                  <br>
+                  Icons used: <span><a target="_blank" href="https://www.flaticon.com">Flaticon</a></span>
+              </p>
+              <div class="d-flex px-5 mt-5">
+                <a target="_blank" href="https://www.flaticon.com/free-icons/plus" title="plus icons"><img class="cpr" src="source/icon/plus.png" alt="" width="48px" height="48px"></a>
+                <a target="_blank" href="https://www.flaticon.com/free-icons/minus" title="minus icons"><img class="cpr" src="source/icon/minus.png" alt="" width="48px" height="48px"></a>
+                <a target="_blank" href="https://www.flaticon.com/free-icons/sad" title="sad icons"><img class="cpr" src="source/icon/sad.png" alt="" width="48px" height="48px"></a>
+                <a target="_blank" href="https://www.flaticon.com/free-icons/delete" title="delete icons"><img class="cpr" src="source/icon/delete.png" alt="" width="48px" height="48px"></a>
+              </div>
+              <a class="btn popup-btn" onclick="closePopUp('copyright')">OK.</a>
+          </div>
+        </div>
+      </div>
     </main>
 
     <footer class="container-fluid">
-      <p class="pt-3">Created by: Attila Szokol</p>
+      <p class="pt-3">Created by: <a class="footerLink" href="https://github.com/SzokolAttila" target="_blank">Attila Szokol</a>
+      <br>
+      © <a class="footerLink" onclick="copyright()">Copyright</a></p>
     </footer>
     
     <script type="module" src="js/script.js"></script>
