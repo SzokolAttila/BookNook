@@ -247,7 +247,7 @@ h2{
     background-color: $orange;
     text-decoration: none;
     color: $black;
-    padding: 0px 5px 0px 5px;
+    padding: 0px 7px 0px 7px;
     border-radius: 50%;
 }
 
@@ -342,6 +342,32 @@ h2{
 .col-6 p{
     position: absolute;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.summary{
+    position: relative;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: larger;
+    text-align: justify;
+    background-color: $black;
+    margin: 30px 20px 20px 30px;
+    color: $lightgray;
+    .source{
+        position: absolute;
+        right: 25px;
+        bottom: 10px;
+        font-style: italic;
+        font-size: smaller;
+        color: $lightgray;
+        transition: all .6s;
+    }
+    .source:hover{
+        color: $orange;
+    }
+}
+
+i{
+    color: $orange;
 }
 
 .currentAmount{

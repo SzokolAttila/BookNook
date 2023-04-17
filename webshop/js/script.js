@@ -5,11 +5,17 @@ let oldFavorites = ``;
 let latestReleases = ``;
 count();
 
+function similar (book){
+    return `
+
+    `;
+}
+
 function template (book){
     return `
     <div class="col-11 col-md-6 col-lg-4 col-xl-3">
         <div class="card my-3">
-            <a target="_blank" href="${book.imgUrl}"><img src="source/img/covers/${book.img}" class="card-img-top" alt="..."></a>
+            <a target="_blank" href="${book.imgUrl}"><img src="source/img/covers/${book.id}.jpg" class="card-img-top" alt="..."></a>
             <div class="card-body">
                 <h5 class="card-title">${book.title}</h5>
                 <p class="card-text"><span>Author:</span> ${book.author}<br><span>Genre:</span> ${book.genre}</p>
@@ -114,10 +120,11 @@ if(url.includes("book.html")){
     if (localStorage.getItem("id") == null)
         localStorage.setItem("id", 1);
     let selected = books.find(x => x.id == localStorage.getItem("id"));
+    document.title += ` - ${selected.title}`;
     let curr = 
     `
-    <div class="col-12 col-md-4 px-5 px-md-3 my-3">
-    <a href="${selected.imgUrl}" target="_blank"><img class="promo img-fluid" src="../source/img/covers/${selected.img}"></a>
+    <div class="col-12 col-md-5 col-lg-4 px-5 px-md-3 my-3">
+    <a href="${selected.imgUrl}" target="_blank"><img class="promo img-fluid" src="../source/img/covers/${selected.id}.jpg"></a>
     <div class="book-card mt-0">
         <h5 class="pt-3">
             ${selected.author}:
@@ -132,8 +139,12 @@ if(url.includes("book.html")){
         </form>
     </div>
 
-    <div class="col-12 col-md-8">
-
+    <div class="col-12 col-md-7 col-lg-8">
+        <p class="p-5 summary">
+            ${selected.summary}
+            <br>
+            <a href="${selected.source}" class="source" target="_blank">Source</a>    
+        </p>
     </div>
     `;
 
@@ -197,7 +208,7 @@ function refreshCart (){
             `
                 <div class="row item">
                     <div class="col-4 col-lg-2">
-                        <a target="_blank" href="${item.imgUrl}"><img src="../source/img/covers/${item.img}" class="item-img img-fluid" alt="..."></a>
+                        <a target="_blank" href="${item.imgUrl}"><img src="../source/img/covers/${item.id}.jpg" class="item-img img-fluid" alt="..."></a>
                     </div>
                     <div class="col-6 col-lg-9">
                         <h5 class="item-title">${item.author}:</h5>
@@ -246,7 +257,7 @@ function purchased(item, value){
     `
     <div class="row">
         <div class="col-2 col-md-4">
-            <img class="img-fluid" src="../source/img/covers/${item.img}">
+            <img class="img-fluid" src="../source/img/covers/${item.id}.jpg">
         </div>
         <div class="col-10 col-md-8">
             <p class="text-center popupText">
